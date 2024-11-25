@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Cars";
+}
+
+@model IEnumerable<Car>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Список автомобилей</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список автомобилей</h1>
+    @if (Model != null && Model.Count() > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Brand)</th>
+                    <th>@Html.DisplayNameFor(model => model.Number)</th>
+                    <th>@Html.DisplayNameFor(model => model.Client)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var car in Model)
+                {
+                    <tr>
+                        <td>@car.Brand</td>
+                        <td>@car.Number</td>
+                        <td>@($"{car.Client.Surname} {car.Client.Name} {car.Client.MiddleName}")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Автомобилей пока нет.</p>
+    }
+</body>
+</html>
