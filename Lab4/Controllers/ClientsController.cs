@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lab4.Controllers
 {
-    [ResponseCache(CacheProfileName = "NoCachingProfile")]
+    [ResponseCache(CacheProfileName = "CachingProfile")]
     public class ClientsController : Controller
     {
         public IActionResult Index()
