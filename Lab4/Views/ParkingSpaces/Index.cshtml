@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "ParkingSpaces";
+}
+
+@model IEnumerable<ParkingSpace>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список парковочных мест</h1>
+    @if (Model != null && Model.Count() > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.IsPenalty)</th>
+                    <th>@Html.DisplayNameFor(model => model.Car)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var parkingSpace in Model)
+                {
+                    <tr>
+                        <td>@parkingSpace.Id</td>
+                        <td>@(parkingSpace.IsPenalty == true ? "Штрафстоянка" : "Основная стоянка")</td>
+                        <td>@(parkingSpace.Car == null ? "Отсутствует" : $"{parkingSpace.Car.Brand} {parkingSpace.Car.Number}")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Парковочных мест пока нет.</p>
+    }
+</body>
+</html>

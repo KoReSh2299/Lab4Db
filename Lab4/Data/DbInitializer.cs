@@ -83,7 +83,7 @@ namespace Lab4.Data
             var unTakenCars = cars.ToList();
 
             var random = new Random();
-            var countUnPenalties = (countEntities * 35) / 100;
+            var countUnPenalties = (countEntities * 65) / 100;
 
             for(int i = 0; i < countEntities; i++)
             {
