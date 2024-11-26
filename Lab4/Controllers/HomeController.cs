@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lab4.Controllers
 {
+    [ResponseCache(CacheProfileName = "NoCachingProfile")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

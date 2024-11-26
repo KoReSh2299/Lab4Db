@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lab4.Controllers
 {
+    [ResponseCache(CacheProfileName = "NoCachingProfile")]
     public class ParkingSpacesController : Controller
     {
         public IActionResult Index()

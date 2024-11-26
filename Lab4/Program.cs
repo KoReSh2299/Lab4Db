@@ -10,7 +10,22 @@ namespace Lab4
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.CacheProfiles.Add("CachingProfile",
+                    new Microsoft.AspNetCore.Mvc.CacheProfile()
+                    {
+                        Duration = 254,
+                        Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.Any
+                    });
+
+                options.CacheProfiles.Add("NoCachingProfile",
+                    new Microsoft.AspNetCore.Mvc.CacheProfile()
+                    {
+                        NoStore = true,
+                        Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.None
+                    });
+            });
             var services = builder.Services;
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
